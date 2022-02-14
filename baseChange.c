@@ -59,9 +59,14 @@ void printIntInNewBase(int base, int n) {
 		return;
 	}
 	int bufIndex = 0;
+	char tmpchar;
 	char output_buf[STRING_OUT_BUF_LENGTH];
 	while(n > 0) {
-		output_buf[bufIndex] = '0' + (n % base);
+		tmpchar = '0' + (n % base);
+		if(tmpchar >= 58) {
+			tmpchar = 'A' + (tmpchar - 58);
+		}
+		output_buf[bufIndex] = tmpchar;
 		n /= base;
 		bufIndex += 1;
 	}
